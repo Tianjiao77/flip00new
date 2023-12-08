@@ -1,0 +1,1138 @@
+%
+% ---------------------------------------------------------------
+% Copyright (C) 2012-2018 Gang Li
+% ---------------------------------------------------------------
+%
+% This work is the default powerdot-tuliplab style test file and may be
+% distributed and/or modified under the conditions of the LaTeX Project Public
+% License, either version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in
+% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+% distributions of LaTeX version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% This Current Maintainer of this work is Gang Li.
+%
+%
+
+\documentclass[
+ size=14pt,
+ paper=smartboard,  %a4paper, smartboard, screen
+ mode=present, 		%present, handout, print
+ display=slides, 	% slidesnotes, notes, slides
+ style=tuliplab,  	% TULIP Lab style
+ pauseslide,
+ fleqn,leqno]{powerdot}
+
+
+\usepackage{cancel}
+\usepackage{caption}
+\usepackage{stackengine}
+\usepackage{smartdiagram}
+\usepackage{attrib}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{amsthm} 
+\usepackage{mathtools}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{boxedminipage}
+\usepackage{rotate}
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{psfrag,overpic}
+\usepackage{fouriernc}
+\usepackage{pstricks,pst-3d,pst-grad,pstricks-add,pst-text,pst-node,pst-tree}
+\usepackage{moreverb,epsfig,subfigure}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{etex}
+\usepackage{breqn}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{gitinfo2}
+\usepackage{siunitx}
+\usepackage{nicefrac}
+%\usepackage{geometry}
+%\geometry{verbose,letterpaper}
+\usepackage{media9}
+\usepackage{animate}
+%\usepackage{movie15}
+\usepackage{auto-pst-pdf}
+
+\usepackage{breakurl}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage{dtk-logos}
+\usepackage{tikz}
+\usepackage{adigraph}
+%\usepackage{tkz-graph}
+\usepackage{hyperref}
+%\usepackage{ulem}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{fontawesome}
+
+
+\usepackage{todonotes}
+% \usepackage{pst-rel-points}
+\usepackage{animate}
+\usepackage{fontawesome}
+
+\usepackage{listings}
+\lstset{frameround=fttt,
+frame=trBL,
+stringstyle=\ttfamily,
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+\lstnewenvironment{code}{
+\lstset{frame=single,escapeinside=`',
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+}{}
+
+\usepackage{hyperref}
+\hypersetup{ % TODO: PDF meta Data
+  pdftitle={Presentation Title},
+  pdfauthor={Gang Li},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}
+}
+
+
+% \usepackage{auto-pst-pdf}
+% package to show source code
+
+\definecolor{LightGray}{rgb}{0.9,0.9,0.9}
+\newlength{\pixel}\setlength\pixel{0.000714285714\slidewidth}
+\setlength{\TPHorizModule}{\slidewidth}
+\setlength{\TPVertModule}{\slideheight}
+\newcommand\highlight[1]{\fbox{#1}}
+\newcommand\icite[1]{{\footnotesize [#1]}}
+
+\newcommand\twotonebox[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1\vphantom{#2}}\fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
+\newcommand\twotoneboxo[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1}\fcolorbox{pdcolor2}{white}{#2}}
+\newcommand\vpspace[1]{\vphantom{\vspace{#1}}}
+\newcommand\hpspace[1]{\hphantom{\hspace{#1}}}
+\newcommand\COMMENT[1]{}
+
+\newcommand\placepos[3]{\hbox to\z@{\kern#1
+        \raisebox{-#2}[\z@][\z@]{#3}\hss}\ignorespaces}
+
+\renewcommand{\baselinestretch}{1.2}
+
+
+\newcommand{\draftnote}[3]{
+	\todo[author=#2,color=#1!30,size=\footnotesize]{\textsf{#3}}	}
+% TODO: add yourself here:
+%
+\newcommand{\gangli}[1]{\draftnote{blue}{GLi:}{#1}}
+\newcommand{\shaoni}[1]{\draftnote{green}{sn:}{#1}}
+\newcommand{\gliMarker}
+	{\todo[author=GLi,size=\tiny,inline,color=blue!40]
+	{Gang Li has worked up to here.}}
+\newcommand{\snMarker}
+	{\todo[author=Sn,size=\tiny,inline,color=green!40]
+	{Shaoni has worked up to here.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title
+% TODO: Customize to your Own Title, Name, Address
+%
+\title{New York City Taxi Trip Duration}
+\author{
+Tianjiao Wang
+\\
+\\Beijing Technology and Business University
+}
+\date{\gitCommitterDate}
+
+
+% Customize the setting of slides
+\pdsetup{
+% TODO: Customize the left footer, and right footer
+rf=\href{http://www.tulip.org.au}{
+Last Changed by: \textsc{\gitCommitterName}\ \gitVtagn-\gitAbbrevHash\ (\gitAuthorDate)
+},
+cf={New York City Taxi Trip Duration},
+}
+
+
+\begin{document}
+\sloppy
+
+\maketitle
+%
+%\begin{slide}{Overview}
+%\tableofcontents[content=sections]
+%\end{slide}
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Overview}
+\tableofcontents[content=currentsection,type=1]
+\end{slide}
+%%
+%%==========================================================================================
+
+
+\section{Introduction}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Introduction}
+\begin{center}
+\twotonebox{\rotatebox{90}{ }}{\parbox{.86\textwidth}
+{The project will build a model that predicts the total ride duration of taxi trips in New York City. The primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables. Accordingly, this project problem is taxi trips duration, which is a outlier detection.
+\begin{itemize}
+\item Data loading and overview
+\item Data cleaning
+\item Features engineering
+\item Model selection
+\item Hyperparameters tuning
+\item Training and predictions
+\end{itemize}
+This project can predict the duration of each trip in the test set , after model selecting, and Hyperparameters tuning.}}
+
+\end{center}
+\bigskip
+%\begin{center}
+%\begin{tabular}{c| c c c c }
+%\toprule
+%Player & \texttt{3PT\%}  & \texttt{FTA} & \texttt{FT\%} & \texttt{To} \\
+%\midrule
+%$P_1$
+%&  {$65$} &  {$4$} &  {$33$} &  {$8$} \\
+%$P_2$
+%&  {$78$} &  {$1$}&  {$65$}&  {$5$} \\
+%$P_3$
+%&  {$58$} &  {$6$} &  {$46$} &  {$3$} \\
+%$P_4$
+%&  {$68$} &  {$1.2$}&  {$85$}&  {$6.2$} \\
+%$P_5$
+%&  {$58$} &  {$6.2$} &  {$36$} &  {$3.4$}\\
+%\bottomrule
+%\end{tabular}
+%\end{center}
+%\bigskip
+
+%%==========================================================================================
+\begin{note}
+First, I will introduce the problem definition.
+In the real life,
+a teacher may be interested in the characteristics that
+make one student obvious different from others.
+Or,
+NBA sports coaches would prefer to
+know the advantages and disadvantages of one player.
+Here, the player can be regarded as a query object.
+
+For example, team A has five players,
+each player has four features.
+The NBA sports coaches may want to know the features of
+player $1$ that are different from others.
+
+The above example can be seen as outlying aspects mining.
+The main purpose of outlying aspects mining is to identify
+the outstanding features of the query object.
+\end{note}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+%\begin{slide}[toc=,bm=]{Outlying Aspects Mining vs Outlier Detection}
+%\begin{center}
+%\begin{tabular}{c| c c c c }
+%\toprule
+%%\centering
+%Player & \texttt{3PT\%}  & \texttt{FTA} & \texttt{FT\%} & \texttt{To} \\
+%\midrule
+%$P_1$
+%&  {$65$} &  {$4$} &  {$33$} &  {$8$} \\
+%$P_2$
+%&  {$78$} &  {$1$}&  {$65$}&  {$5$} \\
+%$P_3$
+%&  {$58$} &  {$6$} &  {$46$} &  {$3$} \\
+%$P_4$
+%&  {$68$} &  {$1.2$}&  {$85$}&  {$6.2$} \\
+%$P_5$
+%&  {$58$} &  {$6.2$} &  {$36$} &  {$3.4$}\\
+%\bottomrule
+%\end{tabular}
+%\end{center}
+%
+%\bigskip
+%
+%\twocolumn[
+%\savevalue{lfrheight}=4.6cm,
+%\savevalue{lfrprop}={
+%linestyle=solid,framearc=.2,linewidth=1pt},
+%rfrheight=\usevalue{lfrheight},
+%rfrprop=\usevalue{lfrprop}
+%]{
+%Outlying Aspects Mining
+%\begin{itemize}
+%\item
+%\smallskip
+%Explain the distinctive \textcolor{orange}{aspects} of the query object.
+%\smallskip
+%\item
+%\smallskip
+%The query object may (or may not) be an outlier.
+%\end{itemize}
+%}{
+%Outlier Detection
+%\begin{itemize}
+%\item
+%\smallskip
+%Find out \textcolor{orange}{all} unusual
+%\textcolor{orange}{objects} in the whole dataset.
+%\smallskip
+%\item
+%\smallskip
+%\textcolor{orange}{No} explanation on how they are different.
+%\end{itemize}
+%}
+
+%%==========================================================================================
+%\begin{note}
+%Based on the above example,
+%I will compare the differences
+%between outlying aspects mining and outlier detection.
+%
+%Outlying aspects mining aims to
+%explain the distinctive aspects of the query object.
+%The query object may or may not be an outlier.
+%In contrast,
+%Outlier detection aims to discover all possible
+%outlying objects in the dataset.
+%Without explaining how and why they are different.
+%
+%Let's go back to the NBA example,
+%in that example,
+%the output of the outlying aspects mining may be
+%a combination of four features,
+%but the output of the outlier detection may be any of those five players.
+%\end{note}
+%%==========================================================================================
+
+%\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+%\begin{slide}{Group Outlying Aspects Mining}
+%\twotonebox {\rotatebox{90}{Defn}}{\parbox{.88\textwidth}
+%{
+%{\textcolor{orange}{Group outlying aspects mining} aims to
+%identify the outstanding features of the group of query object.
+%\begin{itemize}
+%\item
+%Doctors desire to identify the merits \& demerits between
+%\textcolor{orange}{a group of cancer patients} and normal people.
+%\item
+%NBA coaches are passionate about exploring the obvious advantages \&
+%disadvantages of \textcolor{orange}{the team}.
+%\end{itemize}
+%}
+%}}
+%
+%\vspace{1.5cm}
+%
+%\twocolumn{
+%\begin{figure}
+%  \centering
+%  \selectcolormodel{rgb}
+%  \missingfigure{Testing.}
+%  %\includegraphics[width=0.6\textwidth]{figures//demical.eps}\\
+%  \caption{Medical}\label{fig:demical}
+%\end{figure}
+%}{
+%\begin{figure}
+%  \centering
+%  \selectcolormodel{rgb}
+%  \missingfigure{Testing.}
+  %\includegraphics[width=0.6\textwidth]{figures//NBA_team.eps}\\
+% \caption{NBA-Team}\label{fig:timg}
+%\end{figure}
+%}
+
+%%==========================================================================================
+%\begin{note}
+%However,
+%there is such a phenomenon in real life.
+%Doctors desire to identify the characteristics between
+%a group of cancer patients and normal people.
+%NBA coaches are passionate about exploring the obvious strengths and
+%weaknesses of the team compared with other teams.
+%
+%Based on such a phenomenon in the real life,
+%we proposed the concept of group outlying aspects mining.
+%\end{note}
+%%%==========================================================================================
+%
+%\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+%\begin{slide}[toc=,bm=]{Problem Formalization}
+%\twotonebox {\rotatebox{90}{Defn}}{\parbox{.88\textwidth}
+%{
+%{\textcolor{orange}{Group outlying aspects mining} aims to identify
+%the \textcolor{orange}{top-k group outlying subspace $s \subseteq F$} in
+%which the query group $G_q$ is \textcolor{orange} {distinctive with other groups}.
+%\begin{itemize}
+%\item
+%$G = \{G_q, G_2, G_3,..., G_n\}$ $\Leftrightarrow$ a set of groups.
+%\item
+%$G_q$ $\Leftrightarrow$ the query group.
+%\item
+%Other groups $\Leftrightarrow$ comparison groups.
+%\item
+%Each object in the group has $d$ features $F = \{f_1, f_2, ..., f_d\}$.
+%\end{itemize}
+%}
+%}}
+%
+%%%==========================================================================================
+%\begin{note}
+%Next,
+%let me talk about the concept of group outlying aspects mining.
+%
+%For example,
+%Dataset $G$ has $n$ groups.
+%$G_q$ is the query group.
+%and other groups are comparison groups.
+%Each object in the group has d features $F = $ $f_1$, $f_2$, $f_3$ to $f_d$.
+%The group outlying aspects mining is to identify the top-k group outlying subspaces,
+%which are different from other groups.
+%
+%What does the top-k group outlying subspaces mean?
+%Next, I will explain it.
+%\end{note}
+%
+%%%==========================================================================================
+%\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+%\begin{slide}[toc=,bm=]{Term Definition}
+%\begin{itemize}
+%\item
+%Top-k group outlying subspaces
+%
+%\begin{itemize}
+%\item
+%$\rho_s(\cdot)$ $\Rightarrow$ outlying scoring function.
+%
+%\item
+%$\rho_s(\cdot)$ quantifies the outlying degree of the
+%query group $G_q$ in the subspace $s$.
+%
+%\item
+%Order by DESC using scoring function $\rho(\cdot)$
+%to identify top K group outlying subspaces.
+%\end{itemize}
+%\end{itemize}
+%
+%\begin{figure}[htbp]
+%    \centering
+%    \subfigure[Original Feature Spaces]{
+%      \selectcolormodel{rgb}
+%      \missingfigure[figwidth=5.5cm]{Test.}
+%        %\includegraphics[width=0.3\textwidth]{figures//example-basketball-original.eps}
+%        \label{fig:basketball-original}
+%    }
+%    \subfigure[Group Outlying Spaces]{
+%       \selectcolormodel{rgb}
+%       \missingfigure[figwidth=5.5cm]{Test.}
+%        %\includegraphics[width=0.3\textwidth]{figures//example-basketball-projection.eps}
+%        \label{fig:basketball-projection}
+%    }
+%    \subfigure[Another Subspaces]{
+%      \selectcolormodel{rgb}
+%      \missingfigure[figwidth=5.5cm]{Test.}
+%        %\includegraphics[width=0.28\textwidth]{figures//basketball-another-subspaces.eps}
+%        \label{fig:basketball-projection1}
+%    }
+%%    \caption{Histogram representation of a group on three single features}
+%    \label{fig:Basketball-Example}
+%\end{figure}
+%
+%%%==========================================================================================
+%\begin{note}
+%We use $\rho_s(\cdot)$ to describe an outlying scoring function.
+%$\rho_s(\cdot)$ quantifies the outlying degree of the query group in a subspaces $s$.
+%In addition,
+%we use the scoring function to make a descending order and at last
+%filter out the top k group outlying subspaces.
+%It is obvious that the outlying subspaces make the
+%query group different from other groups.
+%\end{note}
+%%%==========================================================================================
+%
+%\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+%\begin{slide}[toc=,bm=]{Term Definition}
+%\begin{itemize}
+%\item
+%Trivial Outlying Features
+%
+%\begin{itemize}
+%\item
+%\smallskip
+%One-dimension subspaces.
+%
+%\item
+%${G_q}$'s outlying degree $\rho(\cdot)$ $>$ $\alpha$.
+%\end{itemize}
+%\end{itemize}
+%\begin{table}
+%\setlength{\abovecaptionskip}{0pt}
+%\setlength{\belowcaptionskip}{10pt}
+%\centering
+%\caption{$\alpha = 4$}
+%
+%\begin{tabular}{  c  |  c }
+%\toprule
+%\centering
+%\texttt{Feature}  & \texttt{Outlying Degree}  \\
+%\midrule
+% {\textcolor{orange}{\{$F_1$\}}} & $4.351$ \\
+% {\{$F_3, F_4$\}}                & $4.024$ \\
+% {\{$F_2, F_4$\}}                & $2.318$ \\
+% {\{$F_2$\}}                     & $2.002$ \\
+% {\{$F_3$\}}                     & $1.028$ \\
+%\bottomrule
+%\end{tabular}
+%\end{table}
+%
+%%%==========================================================================================
+%\begin{note}
+%In order to identify the top-k outlying subspaces,
+%we categorize the features into $2$ non-overlapping groups,
+%trivial outlying features and non-trivial outlying subspaces.
+%
+%First, let me introduce the trivial outlying features.
+%
+%Trivial outlying features are one-dimension subspaces.
+%In the subspace,
+%the query group's outlying degree is larger than the threshold $\alpha$.
+%
+%We can see from table $1$,
+%when the specified threshold $\alpha = 4$,
+%the trivial outlying feature is \{$F_1$\}.
+%\end{note}
+%%%==========================================================================================
+%
+%\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+%\begin{slide}[toc=,bm=]{Term Definition}
+%\begin{itemize}
+%\item
+%Non-Trivial Outlying Subspaces
+%\begin{itemize}
+%\item
+%\smallskip
+%Multi-dimension subspaces.
+%
+%\item
+%\smallskip
+%${G_q}$'s outlying degree $\rho(\cdot)$ $>$ $\alpha$.
+%\end{itemize}
+%\end{itemize}
+%
+%\begin{table}
+%\setlength{\abovecaptionskip}{0pt}
+%\setlength{\belowcaptionskip}{10pt}
+%\centering
+%\caption{$\alpha = 4$}
+%
+%\begin{tabular}{  c  |  c }
+%\toprule
+%\centering
+%\texttt{Feature}  & \texttt{Outlying Degree}  \\
+%\midrule
+% {\{$F_1$\}}                           & $4.351$ \\
+% {\textcolor{orange}{\{$F_3, F_4$\}}}  & $4.024$ \\
+% {\{$F_2, F_4$\}}                      & $2.318$ \\
+% {\{$F_2$\}}                           & $2.002$ \\
+% {\{$F_3$\}}                           & $1.028$ \\
+%\bottomrule
+%\end{tabular}
+%\end{table}
+%
+%%%==========================================================================================
+%\begin{note}
+%Next,
+%I will introduce the non-trivial outlying subspaces.
+%Non-Trivial outlying subspaces are multi-dimension subspaces.
+%In the subspace,
+%the query group's outlying degree is larger than the threshold $\alpha$.
+%
+%Table $2$ shows that,
+%when the threshold $\alpha$ equal four,
+%the non-trivial outlying subspace is \{$F_3$, $F_4$\}.
+%\end{note}
+%%%==========================================================================================
+%
+%\end{slide}
+%%
+%%==========================================================================================
+
+
+\section{Data loading and overview}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Loading the data and overview}
+%Related Work - Outlying Aspects Mining
+\begin{itemize}
+\item
+Data loading - \textcolor{orange}{First 5 lines}
+
+\begin{itemize}
+\item
+Data overview: I take a overview of the type and amount and other information of df and test data.
+\end{itemize}
+\vspace{0.5cm}
+%\twocolumn[
+%\savevalue{lfrheight}=5cm,
+%\savevalue{lfrprop}={
+%linestyle=solid,framearc=.2,linewidth=1pt},
+%rfrheight=\usevalue{lfrheight},
+%rfrprop=\usevalue{lfrprop}
+%]{
+%Disadvantages
+%\begin{itemize}
+%\item
+%\smallskip
+%Positive and negative classes are \textcolor{orange}{Not} balanced.
+%
+%\item
+%\smallskip
+%\textcolor{orange}{Not} quantify the outlying degree accurately.
+%
+%\item
+%\smallskip
+%\textcolor{orange}{Not} identify group outlying aspects.
+%\end{itemize}
+%}
+%{
+%Advantages
+%\begin{itemize}
+%\item
+%\smallskip
+%Easy to operate.
+%
+%\item
+%\smallskip
+%Resolve dimensionality bias.
+%\end{itemize}
+%}
+\end{itemize}
+\centering
+\begin{figure}
+\includegraphics[scale=0.3]{overview.eps}
+{\caption{overview of the data}}
+\end{figure}
+%%==========================================================================================
+%%==========================================================================================
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%=========================================================================================
+
+
+
+%%==========================================================================================
+%%
+\section{Data Cleaning}
+
+\begin{slide}{Data cleaning}
+\begin{itemize}
+\item
+I do the \textcolor{orange}{data clearning} to check the duplicated and missing values and deal with outliers.
+\end{itemize}
+\vspace{0.75cm}
+%\vspace{0.1cm}
+\begin{figure}
+  \centering
+  \selectcolormodel{rgb}
+   \includegraphics[scale=0.3]{duplicate.eps}
+  \caption{No duplicated or missing values}
+\end{figure}
+%{
+%Outlying Aspects Mining
+%\begin{itemize}
+%\item
+%Concentrates on differences between \textcolor{orange}{objects}.
+%
+%\item
+%\textcolor{orange}{One} point.
+%\end{itemize}
+%\bigskip
+%\begin{figure}
+%  \centering
+%  \selectcolormodel{rgb}
+%  \missingfigure{Testing a long text string.}
+%%  \includegraphics[width=0.5\textwidth]{figures//OutAspect_target.eps}\\
+%  \caption{Outlying Aspects Target}\label{fig:OutAspect-target}
+%\end{figure}
+%}
+
+%%==========================================================================================
+\begin{note}
+In this research paper,
+we proposed the group outlying aspects mining.
+Now,
+let me summarize the differences between group outlying aspects mining and outlying aspects mining.
+
+Group outlying aspects mining mainly focuses on the differences between groups.
+But outlying aspects mining mainly concentrates on the differences between objects.
+The target of group outlying aspects mining can be seen as many points.
+While the target of outlying aspects mining can be regarded as one point.
+
+In the NBA example,
+group outlying aspects mining focuses on the advantages
+or disadvantages of one team,
+however,
+outlying aspects mining focuses on the advantages or disadvantages of one player.
+\end{note}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Visualize outliers}
+\begin{itemize}
+\item
+There are  \textcolor{orange}{outliers}. I can’t find a proper interpretation and it will probably damage our model, so I choose to get rid of them. 
+
+\end{itemize}
+
+\begin{figure}
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width=0.5\textwidth]{outliers1.eps}
+\caption{boxplot for trip-duration} 
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width=0.5\textwidth]{outliers2.eps}
+\caption{pickup-longitude}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width=0.5\textwidth]{outliers3.eps}
+\caption{dropoff-longitude}
+\end{minipage}
+\end{figure}
+%%==========================================================================================
+%\begin{note}
+%Based on current existing methods,
+%there still remains some research challenges.
+%
+%The first one is how to represent the group features
+%based on the features of the individuals in the group.
+%
+%Although the arithmetic mean of all elements
+%in each feature can describe the features of one group.
+%It can be affected by outlier values,
+%and can't reflect the entire distribution of group features.L
+%\end{note}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Outlying Degree Scoring}
+
+\begin{itemize}
+\item
+In this step, I only keep trips that
+lasted  \textcolor{orange}{less than 5900 seconds}, and only keep trips with passengers, and remove position outliers(pickup-longitude > -100, pickup-latitude < 50; dropoff-longitude < -70 and dropoff-longitude > -80, dropoff-latitude < 50).
+
+\end{itemize}
+
+%%==========================================================================================
+%\begin{note}
+%The second challenge is how to evaluate the outlying degree of
+%the query group between different aspects.
+%
+%In that case,
+%we need to design a scoring function to measure the outlying degree.
+%But adopting an appropriate scoring function without dimension bias still remains a problem.
+%\end{note}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+\section{Features engineering}
+
+\begin{slide}{Target}
+
+\begin{itemize}
+\item
+We take a look of the \textcolor{orange}{distribution of trip-duration value}.
+\end{itemize}
+\begin{figure}
+\centering
+\selectcolormodel{rgb}
+\includegraphics[scale=0.15]{trip_duration.eps}
+\caption{trip-duration}
+\end{figure}
+\begin{itemize}
+\item
+The distribution is right-skewed so we can consider a log-transformation of trip-duration column.
+\end{itemize}
+\begin{figure}
+\centering
+\selectcolormodel{rgb}
+\includegraphics[scale=0.15]{log（trip_duration).eps}
+\caption{log-transformation of trip-duration column}
+\end{figure}
+
+%%==========================================================================================
+\begin{note}
+The third challenge is how to improve efficiency.
+
+To be specific,
+when the dimension of data is high,
+the candidate subspace increase dramatically,
+so that it is very easy to exceed the limit of computer resources.
+\end{note}
+%%==========================================================================================
+\end{slide}
+%%
+%%==========================================================================================
+\begin{slide}{Deal with data}
+	
+\begin{itemize}
+\item
+Deal with categorical features
+\begin{itemize}
+	\item
+	One-hot encoding binary categorical features
+\end{itemize}
+\item
+Deal with dates
+\begin{itemize}
+\item
+Datetyping the dates
+\item
+Date features creations and deletions
+\end{itemize}
+\item
+Distance and speed creations
+\begin{itemize}
+\item
+Function aiming at calculating distances from coordinates
+\item
+Add distance feature
+\item
+Function aiming at calculating the direction
+\item
+Add direction feature
+\item
+Visualize distance outliers
+\item
+Remove distance outliers
+\item
+Create speed feature
+\item
+Visualize speed feature
+\end{itemize}
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Distance and speed outliers}
+\begin{figure}
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width=0.6\textwidth]{distance.eps}
+\caption{boxplot for distance}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\centering
+\includegraphics[width=0.6\textwidth]{speed.eps}
+\caption{boxplot for speed}
+\end{minipage}
+\end{figure}
+\end{slide}
+
+\begin{slide}[toc=,bm=]{Correlations and dimensionality reductions}
+\begin{itemize}
+\item
+Correlations between variables
+\vspace{1cm}
+\begin{figure}
+\centering
+\selectcolormodel{rgb}
+\includegraphics[scale=0.4]{correlations between variables.eps}
+\caption{correlations between variables}
+\end{figure}
+\end{itemize}
+\end{slide}
+
+
+
+\section{Model selection}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Model selection}
+\begin{itemize}
+\item
+Split
+\begin{itemize}
+\item
+Split the labeled data frame into two sets: features and target
+\item
+Split the labeled data frame into two sets to train then test the models
+\end{itemize}
+\item 
+Metrics
+\begin{itemize}
+\item
+For this specific problematic, we'll measure the error using the RMSE (Root Mean Squared Error).
+\end{itemize}
+\item
+Models
+\begin{itemize}
+\item
+Try GradientBoosting
+\item
+Try RandomForest
+\item 
+Try LightGBM
+\end{itemize}
+\end{itemize}
+LightGBM is blazingly fast compared to RandomForest and classic GradientBoosting, while fitting better. It is our clear winner.
+\begin{itemize}
+\item
+Cross-validation
+\end{itemize}
+Our LightGBM model is stable.
+%\begin{figure}
+%  \centering
+%  \selectcolormodel{rgb}
+%  \missingfigure{Testing a long text string.}
+%  \includegraphics[width=0.55\textwidth]{figures//framework1.eps}\\
+%\caption{Framework of GOAM Algorithm} \label{framework}
+%\end{figure}
+
+%%==========================================================================================
+%\begin{note}
+%In order to tackle the above issues,
+%GOAM algorithm is involved.
+%
+%Let's have a look at the framework of this algorithm.
+%The first step is to use the histogram to represent the group features
+%based on all individuals in the group.
+%
+%Following that,
+%we utilize the earth mover distances to measure the
+%outlying degree between groups.
+%This is the second step:
+%outlying degree scoring.
+%
+%The last step is to identify the outlying aspects.
+%
+%\end{note}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+\section{Hyperparameters tuning}
+
+\begin{slide}{Hyperparameters tuning}
+%Step One - Group Feature Extraction}
+\begin{itemize}
+\item
+Hyperparameters tuning using RandomizedSearchCV
+\item 
+Test the following parameters
+\end{itemize}
+%%==========================================================================================
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+\section{Training and predictions}
+\begin{slide}{Training and predictions}
+%Step Two - Outlying Degree Scoring
+\begin{itemize}
+\item
+Training on all labeled data using the best parameters in hyperparameters tuning
+\item 
+Training on all labeled data using the best parameters (sklearn API version)
+\item 
+Training on all labeled data using the best parameters
+\begin{itemize}
+\item
+CPU times: user 9min 22s, sys: 8.74 s, total: 9min 31s\\
+Wall time: 4min 50s
+\end{itemize}
+\item
+Make predictions on test data frame
+\item 
+Create a data frame designed a submission on Kaggle
+\item 
+Create a csv out of the submission data frame
+
+\begin{figure}
+\selectcolormodel{rgb}
+%\missingfigure{Make a sketch of the structure of a trebuchet.}
+\includegraphics[scale=0.4]{predict_result.eps}
+\caption{predict-result}
+\end{figure}
+\end{itemize}
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%%
+
+
+
+%%==========================================================================================
+%%
+
+
+
+
+
+
+%%==========================================================================================
+%%
+
+
+\section{Conclusion}
+
+%%==========================================================================================
+%%
+\begin{slide}{Conclusion}
+\begin{itemize}
+\item
+The dataset provided has very low missing values although observations provided cover only two vendors (two taxi companies) and also the data provided is across a single year and only six months of the year (fall data is missing)
+\vspace{1cm}
+\item
+We can see how the taxis in a city like New York is so much location and time based and it's usage is more or less predictable on the basis of these factors (among others).
+\end{itemize}
+
+%%==========================================================================================
+
+
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+%
+\begin{slide}[toc=,bm=]{Questions?}
+\begin{center}
+\begin{figure}
+    \animategraphics[autoplay, loop, height=0.4\textheight]{5}{./graphics//gif//question//q_}{1}{30}
+\end{figure}
+\end{center}
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
+% TODO: Contact Page
+\begin{wideslide}[toc=,bm=]{Contact Information}
+\centering
+\vspace{\stretch{1}}
+\twocolumn[
+lcolwidth=0.35\linewidth,
+rcolwidth=0.65\linewidth
+]
+{
+% \centerline{\includegraphics[scale=.2]{tulip-logo.eps}}
+}
+{
+\vspace{\stretch{1}}
+Tianjiao Wang\\
+Business School\\
+Beijing Technology and Business University, China
+\begin{description}
+ \item[\textcolor{orange}{\faEnvelope}] \href{mailto:Wangtianjiaoj@gmail.com}
+ {\textsc{\footnotesize{wangtianjiaoj@gmail.com}}}
+
+ \item[\textcolor{orange}{\faHome}] \href{http://www.tulip.org.au}
+ {\textsc{\footnotesize{Beijing Technology and Business University}}}
+\end{description}
+}
+\vspace{\stretch{1}}
+\end{wideslide}
+
+\end{document}
+
+\endinput

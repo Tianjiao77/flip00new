@@ -1,0 +1,431 @@
+%%
+%% This is file `tikzposter-template.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tikzposter.dtx  (with options: `tikzposter-template.tex')
+%%
+%% This is a generated file.
+%%
+%% Copyright (C) 2014 by Pascal Richter, Elena Botoeva, Richard Barnard, and Dirk Surmann
+%%
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 2.0 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%%
+%% http://www.latex-project.org/lppl.txt
+%%
+%% and version 2.0 or later is part of all distributions of
+%% LaTeX version 2013/12/01 or later.
+%%
+
+
+\documentclass{tikzposter} %Options for format can be included here
+
+\usepackage{todonotes}
+
+\usepackage[tikz]{bclogo}
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[absolute]{textpos}
+\usepackage[it]{subfigure}
+\usepackage{graphicx}
+\usepackage{cmbright}
+%\usepackage[default]{cantarell}
+%\usepackage{avant}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+\usepackage[T1]{fontenc}
+
+
+%% add your packages here
+\usepackage{hyperref}
+% for random text
+\usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[pangram]{blindtext}
+\usepackage{adjustbox}
+
+\colorlet{backgroundcolor}{blue!10}
+
+ % Title, Author, Institute
+\title{New York City Taxi Trip Duration}
+\author{Tianjiao Wang}
+\institute{Beijing Technology and Business University
+}
+%\titlegraphic{logos/tulip-logo.eps}
+
+%Choose Layout
+\usetheme{Wave}
+
+%\definebackgroundstyle{samplebackgroundstyle}{
+%\draw[inner sep=0pt, line width=0pt, color=red, fill=backgroundcolor!30!black]
+%(bottomleft) rectangle (topright);
+%}
+%
+%\colorlet{backgroundcolor}{blue!10}
+
+\begin{document}
+
+
+\colorlet{blocktitlebgcolor}{blue!23}
+
+ % Title block with title, author, logo, etc.
+\maketitle
+
+\begin{columns}
+ % FIRST column
+\column{0.5}% Width set relative to text width
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+ %\block{Main Objectives}{
+%  	      	\begin{enumerate}
+%  	      	\item Formalise research problem by extending \emph{outlying aspects mining}
+%  	      	\item Proposed \emph{GOAM} algorithm is to solve research problem
+%  	      	\item Utilise pruning strategies to reduce time complexity
+%  	      	\end{enumerate}
+%%  	      \end{minipage}
+%}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Introduction}{
+    The project will build a model that predicts the total ride duration of taxi trips in New York City. 
+    The primary dataset is one released by the NYC Taxi and Limousine Commission, which includes pickup time, geo-coordinates, number of passengers, and several other variables.
+    Accordingly, this project problem is \emph{taxi trips duration}, which is a \emph{outlier detection}.
+  	
+  	\begin{description}
+  	\item[Data loading and overview ] aims to Loading the data and take a overview of the data.
+  	
+  	\item[Data cleaning ] aims to identify duplicated and missing values, and deal with outliers.
+  	
+  	\item[Features engineering] aims to visualize the distribution of trip-duration values, deal with categorical features, deal with dates, create distance and speed, do correlations and dimensionality reductions.
+  	
+  
+  	\end{description}
+
+  	This project  can predict the duration of each trip in the \emph{test set} , after \emph{model selecting},
+    and  \emph{Hyperparameters tuning} .
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Data loading and overview}{
+\begin{itemize}
+    \item
+    %\emph{Data loading and overview}
+    At first, I \emph{quickly look at the first 5 lines of a dataset to understand the structure, format, and content of the data }.
+    Then I take a overview of \emph{the type and amount and other information of df and test data}. 
+
+%\item
+%\emph{Group Outlying Aspects Mining},
+%\emph{Outlying Aspects Mining} and
+%\emph{Outlier Detection} are different with each other.
+\end{itemize}
+
+\begin{center}
+    \begin{minipage}{0.3\linewidth}
+    \centering
+%    \begin{tikzfigure}
+%    \missingfigure[figcolor=white]{Testing figcolor}
+%    {\small{Group Outlying Aspects Mining}}
+%    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \begin{adjustbox}{right=15cm}
+\includegraphics{E:/my study/BTBU Tourism/Flip00/Flip00-Tianjiao/templatex-develop/templatex/overview.eps}
+    \end{adjustbox}
+    {\small{overview of data}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.\linewidth}
+    \centering
+%    \begin{tikzfigure}
+%    \missingfigure[figcolor=white]{Testing figcolor}
+%    {\small{Outlier Detection}}
+%    \end{tikzfigure}%
+    \end{minipage}
+\end{center}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+%\note{Note with default behavior}
+
+%\note[targetoffsetx=12cm, targetoffsety=-1cm, angle=20, rotate=25]
+%{Note \\ offset and rotated}
+
+ % First column - second block
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Data cleaning }{
+  	I do the \emph{data learning}  to check  the 
+    \emph{duplicated and missing values} and \emph{deal with outliers }
+
+%    1) Group Feature Extraction,
+%    2) Outlying Degree Scoring, and
+%    3) Outlying Aspects Identification.
+  	
+\begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+%  \includegraphics[width=0.8\linewidth]{figures//framework.pdf}
+    \includegraphics{duplicate.eps}
+\end{tikzfigure}
+\vspace{2cm}
+\begin{description}
+  	\item[Visualize outliers]
+  	
+   There are outliers. I can't find a proper interpretation and it will probably damage our model, so I choose to get rid of them.
+
+%    \item
+%    The histogram of $G_q$ on three features are as follows.
+\end{description}
+
+\begin{center}
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \includegraphics[scale=0.3]{outliers1.eps}
+    {\small{outliers for trip-duration}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \includegraphics[scale=0.3]{outliers2.eps}
+    {\small{outliers for pickup positions}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+   \includegraphics[scale=0.3]{outliers3.eps}
+   {\small{outliers for dropoff positions}}
+    \end{tikzfigure}%
+    \end{minipage}
+\end{center}
+\begin{description}
+\item[visualize outliers]
+
+\vspace{2cm}
+  \textit{ {\LARGE  In this step,
+    I only keep trips that lasted less than 5900 seconds, and only keep trips with passengers.}}
+\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% SECOND column
+\column{0.5}
+ %Second column with first block's top edge aligned with with previous column's top.
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Features engineering}{
+\begin{description}
+    \item
+    \emph{Visualize the distribution of trip-duration value},
+\end{description}
+
+\begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+     \includegraphics[scale=0.9]{trip_duration.eps}
+    {\small{The distribution of trip-duration values}}
+\end{tikzfigure}
+  The distribution is right-skewed so we can consider a log-transformation of trip-duration column.
+  \item
+  \emph{Deal with categorical features}
+  \item
+  \emph{Deal with dates}
+  \item
+  \emph{Distance and speed creations}
+  \begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+  	\includegraphics{speed.eps}
+  	{\small{speed}}
+  \end{tikzfigure}
+  \item
+  \emph{Correlations and dimensionality reductions}
+  \begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+  	\includegraphics{correlations between variables.eps}
+  	{\small{correlations between variables}}
+  \end{tikzfigure}
+
+%\begin{description}
+%  	\item[Outlying Aspects Identification]
+%    In this step,
+%    based on the value of outlying degree
+%    we will identify the group outlying aspects.
+%    If a feature's outlying degree is greater than a threshold,
+%    the more likely the feature is group outlying aspect.
+%    When the dimensionality of features is high,
+%    we adopt a stage-wise candidate subspace construction strategy to
+%    alleviate the exponential explosion.
+%\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+% Second column - first block
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block[titleleft]{Model selection}
+{
+\begin{description}
+  	\item[LightGBM]  is blazingly fast compared to RandomForest and classic GradientBoosting, while fitting better. It is our clear winner.\\
+  	
+  	\vspace{0.5cm}
+  	Our LightGBM model is stable.
+\end{description}
+\vspace{.5cm}
+%\begin{tabular}{ c | c | c | c }
+%    \toprule
+%    Method     &  Truth Outlying Aspects    & Identified Aspects & Accuracy      \\
+%    \midrule
+%    GOAM       &  $\{F_1\}$, $\{F_2F_4\}$   &  $\{F_1\}$, $\{F_2F_4\}$    & 100\%    \\
+%
+%     Arithmetic Mean based OAM &  $\{F_1\}$, $\{F_2F_4\}$   &  $\{F_4\}$, $\{F_2\}$    &  0\% \\
+%
+%     Median based OAM &  $\{F_1\}$, $\{F_2F_4\}$   &  $\{F_2\}$, $\{F_4\}$    &           0\% \\
+%     \bottomrule
+%\end{tabular}
+%\vspace{.2cm}
+%\begin{description}
+%    \item
+%    It can be observed that the GOAM method can identify the trivial outlying features
+%    and non-trivial outlying subspaces correctly and is obvious from the table
+%    that the accuracy of GOAM is the best, which is ($100\%$).
+%\end{description}
+%
+%\begin{description}
+%\item[NBA Dataset] was collected from Yahoo Sports
+%website (\url{http://sports.yahoo.com.cn/nba}).
+%The data include all teams from the six divisions,
+%and each player in the team has $12$ features.
+%\end{description}
+%\vspace{.5cm}
+%\begin{tabular}{ c | c | c }
+%    \toprule
+%    Teams                   & Trivial Outlying Aspects  & NonTrivial Outlying Aspects    \\
+%    \toprule
+%    Cleveland Cavaliers     & \{3FA\}                   & \{FGA, FT\%\}, \{FGA, FG\%\} \\
+%    Orlando Magic           & \{Stl\}                   & None                         \\
+%    Milwaukee Bucks         & \{To\}, \{FTA\}           & \{FGA, FTA\}, \{3FA, FTA\}     \\
+%%    Golden State Warriors   & \{FG\%\}                  & \{FT\%, Blk\}, \{FGA, 3PT\%, FTA\}\\
+%%    Utah Jazz               & \{Blk\}                   & \{3FA, 3PT\%\}                    \\
+%    New Orleans Pelicans    & \{FT\%\}, \{FTA\}         & \{FTA, Stl\}, \{FTA, To\}          \\
+%    \bottomrule
+%\end{tabular}
+           
+\begin{minipage}{0.5\linewidth}
+    \centering
+%    \begin{tikzfigure}
+%    \missingfigure[figcolor=white]{Testing figcolor}
+%
+%    {\small{New Orleans Pelicans on FT\%}}
+%    \end{tikzfigure}%
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\linewidth}
+    \centering
+%    \begin{tikzfigure}
+%    \missingfigure[figcolor=white]{Testing figcolor}
+%
+%    {\small{New Orleans Pelicans on FTA}}
+%    \end{tikzfigure}%
+\end{minipage}
+%\vspace{.2cm}
+%\begin{description}
+%\item
+%\texttt{New Orleans Pelicans} has more players with
+%lower \{free throw percentage\}, \{free throws attempted\}.
+%\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% Second column - second block
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block[titlewidthscale=1, bodywidthscale=1]
+{Training and predictions}
+{
+\begin{description}
+  \item[Training]
+  Training on all labeled data using the best parameters
+
+  \item[Prediction]
+  Make predictions on test data frame
+  \begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+  	\includegraphics{predict_result.eps}
+  	{\small{predict-result.eps}}
+  \end{tikzfigure}
+%  \item[Strategies]
+%  Utilize the pruning strategies to \\ reduce time complexity.
+\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% Bottomblock
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
+\note[targetoffsetx=8cm, targetoffsety=-4cm, angle=30, rotate=15,
+radius=2cm, width=.26\textwidth]{
+Acknowledgement
+\begin{itemize}
+    \item
+    Flip00 learning-kaggle project
+ \end{itemize}
+}
+
+%\note[targetoffsetx=8cm, targetoffsety=-10cm,rotate=0,angle=180,radius=8cm,width=.46\textwidth,innersep=.1cm]{
+%Acknowledgement
+%}
+
+%\block[titlewidthscale=0.9, bodywidthscale=0.9]
+%{Acknowledgement}{
+%}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+\end{columns}
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+%[titleleft, titleoffsetx=2em, titleoffsety=1em, bodyoffsetx=2em,%
+%roundedcorners=10, linewidth=0mm, titlewidthscale=0.7,%
+%bodywidthscale=0.9, titlecenter]
+
+%\colorlet{noteframecolor}{blue!20}
+\colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
+\note[targetoffsetx=-13cm, targetoffsety=-12cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
+{
+\begin{minipage}{0.3\linewidth}
+\centering
+\includegraphics[width=24cm]{./graphics/logos/tulip-wordmark.eps}
+\end{minipage}
+\begin{minipage}{0.7\linewidth}
+{ \centering
+ Flip00-kaggle project, Beijing, China
+}
+\end{minipage}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+\end{document}
+
+%\endinput
+%%
+%% End of file `tikzposter-template.tex'.
