@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=latex 2023.12.2)  4 DEC 2023 20:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=latex 2023.12.2)  9 DEC 2023 11:21
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1261,13 +1261,11 @@ Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen336
 \ESO@tempdimb=\dimen337
 )
-Package gitinfo2 Info: gitinfo2 found : ../../.git/gitHeadInfo.gin
-(gitinfo2)              on input line 128.
 
-(../../.git/gitHeadInfo.gin)
-(d:/software/texlive/texlive/2022/texmf-dist/tex/latex/gitinfo2/gitexinfo.sty
-Package: gitexinfo 2015/11/22 v2.0.7 Auxiliary package for gitinfo2
-)) (d:/software/texlive/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package gitinfo2 Warning: I can't find the file '.git/gitHeadInfo.gin'.
+(gitinfo2)                All git metadata has been set to '(None)'.
+
+) (d:/software/texlive/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
 rs
 \f@nch@headwidth=\skip90
@@ -1279,10 +1277,9 @@ rs
 \f@nch@O@erf=\skip96
 \f@nch@O@olf=\skip97
 \f@nch@O@orf=\skip98
-)
-(d:/software/texlive/texlive/2022/texmf-dist/tex/latex/mathtools/mathtools.sty
+) (d:/software/texlive/texlive/2022/texmf-dist/tex/latex/mathtools/mathtools.st
+y
 Package: mathtools 2022/02/07 v1.28a mathematical typesetting tools
-
 (d:/software/texlive/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
@@ -1447,8 +1444,24 @@ File: speed.eps Graphic file (type eps)
 File: correlations between variables.eps Graphic file (type eps)
 
 <correlations between variables.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 228--265
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: ./graphics/logos/tulip-logo.eps Graphic file (type eps)
- <./graphics/logos/tulip-logo.eps>
+<./graphics/logos/tulip-logo.eps>
 
 Package fancyhdr Warning: \footskip is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.79996pt, for example:
@@ -1483,12 +1496,12 @@ Package rerunfilecheck Info: File `kaggle-report.out' has not changed.
 (rerunfilecheck)             Checksum: 623D2595688036E50C6DA03846DF082D;1109.
  ) 
 Here is how much of TeX's memory you used:
- 38376 strings out of 478269
- 786069 string characters out of 5841888
- 1201082 words of memory out of 5000000
- 55777 multiletter control sequences out of 15000+600000
+ 38320 strings out of 478269
+ 784911 string characters out of 5841888
+ 1201013 words of memory out of 5000000
+ 55723 multiletter control sequences out of 15000+600000
  475841 words of font info for 54 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  120i,12n,134p,1010b,802s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on kaggle-report.dvi (6 pages, 32864 bytes).
+Output written on kaggle-report.dvi (6 pages, 33540 bytes).

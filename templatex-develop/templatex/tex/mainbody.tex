@@ -181,20 +181,20 @@ There are outliers. I can’t find a proper interpretation and it will probably 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{outliers1.eps}
-	\caption{outliers for trip-duration}
+	\caption{boxplot for trip-duration}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{outliers2.eps}
-	\caption{outliers for pickup positions}
+	\caption{pickup positions}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{outliers3.eps}
-	\caption{outliers for  dropoff positions}
+	\caption{dropoff positions}
 \end{figure}
 \vspace{5cm}\\
-In this step, I only keep trips that lasted less than 5900 seconds, and only keep trips with passengers.
+In this step, I only keep trips that lasted less than 5900 seconds, and only keep trips with passengers, and remove position outliers(pickup-longitude more than -100, pickup-latitude less than 50; dropoff-longitude less than -70 and dropoff-longitude more than -80, dropoff-latitude less than 50).
 %\blindtext
 %\blindlist{itemize}[3]
 %\blinditemize
@@ -233,11 +233,15 @@ At first, I visualize the distribution of trip-duration values.
 \end{figure}
 \\
 The distribution is right-skewed so we can consider a log-transformation of trip-duration column.
+When dealing with a right-skewed distribution, considering a log-transformation of the data can be a useful technique. Right-skewed distributions are characterized by a long tail on the right side, where some data points have very high values, leading to a positively skewed distribution.
+\\
+Logarithmic transformation, specifically taking the natural logarithm (base e) or common logarithm (base 10) of the data, is a common approach to mitigate the skewness in the distribution. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{log（trip_duration).eps}
 	\caption{log of trip-duration}
 \end{figure}
+\\
 \\
 Then I deal with categorical features using One-hot encoding binary categorical features. One-hot encoding is a common technique used in data preprocessing, particularly in machine learning, for handling categorical data. It’s particularly useful when the categorical data is nominal (i.e., there is no intrinsic order to the
 categories). 
@@ -246,12 +250,12 @@ Then I deal with dates, and ccreat distance and speed. Finally, I remove the out
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{distance.eps}
-	\caption{outliesrs of distance}
+	\caption{boxplot for distance}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{speed.eps}
-	\caption{outliesrs of speed}
+	\caption{boxplot for speed}
 \end{figure}
 \begin{figure}[h]
 	\centering
